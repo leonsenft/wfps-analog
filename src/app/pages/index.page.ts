@@ -1,6 +1,6 @@
-import {RouteMeta} from '@analogjs/router';
-import {Component} from '@angular/core';
-import {RouterLink} from '@angular/router';
+import { RouteMeta } from '@analogjs/router';
+import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 export const routeMeta: RouteMeta = {
   title: 'Analog Starter App'
@@ -21,11 +21,10 @@ export const routeMeta: RouteMeta = {
 
     <h3>The fullstack meta-framework for Angular!</h3>
 
-    <div class="mb-32 grid text-center lg:mb-0">
+    <div class="mb-32 grid grid-flow-col text-center lg:mb-0">
         <a
           routerLink="/discussions"
           class="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-
         >
           <h2 class="mb-3 text-2xl font-semibold">
             Discussions
@@ -35,6 +34,20 @@ export const routeMeta: RouteMeta = {
           </h2>
           <p class="m-0 max-w-lg text-sm opacity-50">
             See discussions in the Github repo.
+          </p>
+        </a>
+        <a
+          routerLink="/about"
+          class="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+        >
+          <h2 class="mb-3 text-2xl font-semibold">
+            About
+            <span class="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
+              -&gt;
+            </span>
+          </h2>
+          <p class="m-0 max-w-lg text-sm opacity-50">
+            Learn about this app.
           </p>
         </a>
       </div>
