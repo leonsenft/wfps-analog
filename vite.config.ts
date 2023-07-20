@@ -12,14 +12,19 @@ export default defineConfig(({ mode }) => ({
   resolve: {
     mainFields: ['module'],
   },
-  plugins: [analog({
-    prerender: {
-      routes: async () => [
-        '/',
-        '/about',
-      ],
-    },
-  })],
+  plugins: [
+    analog({
+      nitro: {
+        logLevel: 3,
+      },
+      prerender: {
+        routes: async () => [
+          '/',
+          '/about',
+        ],
+      },
+    }),
+  ],
   test: {
     globals: true,
     environment: 'jsdom',

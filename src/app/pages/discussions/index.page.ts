@@ -1,9 +1,9 @@
-import {RouteMeta} from '@analogjs/router';
-import {NgFor} from '@angular/common';
-import {Component, inject, OnInit, signal, WritableSignal} from '@angular/core';
+import { RouteMeta } from '@analogjs/router';
+import { NgFor } from '@angular/common';
+import { Component, inject, OnInit, signal, WritableSignal } from '@angular/core';
 
-import type {Discussion} from '../../lib/github-interfaces';
-import {GithubService} from '../../lib/github.service';
+import type { Discussion } from '../../lib/github-interfaces';
+import { GithubService } from '../../lib/github.service';
 
 export const routeMeta: RouteMeta = {
   title: 'Github Discussions'
@@ -44,11 +44,11 @@ export default class DiscussionsComponent implements OnInit {
 
   ngOnInit() {
     this.github.getDiscussionList()
-        .then(discussions => {
-          this.discussions.set(discussions);
-        })
-        .catch(e => {
-          console.log(e);
-        });
+      .then(discussions => {
+        this.discussions.set(discussions);
+      })
+      .catch(e => {
+        console.log(e);
+      });
   }
 }

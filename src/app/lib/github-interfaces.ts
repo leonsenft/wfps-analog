@@ -1,4 +1,9 @@
-import type {REACTIONS} from './reactions';
+import type { REACTIONS } from './reactions';
+
+export interface About {
+  description: string,
+  url: string,
+}
 
 export interface Discussion {
   number: number;
