@@ -24,9 +24,8 @@ export const routeMeta: RouteMeta = {
       <h2>Title: {{discussion.title}}</h2>
       <p>By: {{discussion.author}}</p>
       <p>Created at: {{discussion.createdAt}}</p>
-      <p>Created at: {{discussion.number}}</p>
 
-      <button [routerLink]="/discussions/{{discussion.number}}"
+      <button routerLink="/discussions/{{discussion.number}}"
       class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">View Details</button>
 
       <hr/>
