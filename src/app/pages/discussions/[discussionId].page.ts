@@ -15,11 +15,16 @@ export const routeMeta: RouteMeta = {
 @Component({
   selector: 'app-discussions-details',
   standalone: true,
-  imports: [NgFor],
+  imports: [NgFor, AsyncPipe, JsonPipe],
   template: `
     <header class="mb-4">
       <h1 class="mb-1 text-2xl font-semibold">Discussions Details</h1>
-      <p class="mb-1 max-w-lg text-sm opacity-50">From Github</p>
+      <p class="mb-1 max-w-lg text-sm opacity-50">From Github ({{ discussionId }})</p>
+
+      <h2>Title: {{discussionsDetails.title}}</h2>
+      <p>By: {{discussionsDetails.author}}</p>
+      <p>Created at: {{discussionsDetails.createdAt}}</p>
+
 
       <hr />
     </header>
@@ -35,28 +40,22 @@ export const routeMeta: RouteMeta = {
 export default class DiscussionsDetailsComponent implements OnInit {
   private github: GithubService = inject(GithubService);
 
-  private readonly route = inject(ActivatedRoute);
+  // private readonly route = inject(ActivatedRoute);
 
-  readonly discussionId$: number = this.route.paramMap.pipe(
-    map((params) => params.get('discussionId'))
-  );
+  // readonly discussionId$ = this.route.paramMap.pipe(
+  //   map((params) => params.get('discussionId'))
+  // );
 
-  // @Input() discussionId: string;
+  @Input() discussionId: number;
 
   discussionsDetails: WritableSignal<DiscussionDetails> = signal();
 
   ngOnInit() {
-
-    console.log("onInit:" + this.discussionId$);
-      this.github.getDiscussionDetails()
+      this.github.getDiscussionDetails(this.discussionId)
           .then( discussionsDetails => {
               this.discussionsDetails.set(discussionsDetails)
               console.log(this.discussionsDetails)
           })
-    // this.github.getDiscussionList()
-    //     .then(discussions => {
-    //       this.discussions.set(discussions);
-    //     })
         .catch(e => {
           console.log(e);
         });
