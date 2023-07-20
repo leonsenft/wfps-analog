@@ -1,4 +1,5 @@
 import {RouteMeta} from '@analogjs/router';
+import {RouterLink} from '@angular/router';
 import {NgFor} from '@angular/common';
 import {Component, inject, OnInit, signal, WritableSignal} from '@angular/core';
 
@@ -12,7 +13,7 @@ export const routeMeta: RouteMeta = {
 @Component({
   selector: 'app-discussions',
   standalone: true,
-  imports: [NgFor],
+  imports: [NgFor, RouterLink],
   template: `
     <header class="mb-4">
       <h1 class="mb-1 text-2xl font-semibold">Discussions</h1>
@@ -23,7 +24,11 @@ export const routeMeta: RouteMeta = {
       <h2>Title: {{discussion.title}}</h2>
       <p>By: {{discussion.author}}</p>
       <p>Created at: {{discussion.createdAt}}</p>
-      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">View Details</button>
+      <p>Created at: {{discussion.number}}</p>
+
+      <button [routerLink]="/discussions/{{discussion.number}}"
+      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">View Details</button>
+
       <hr/>
     </article>
     `,
